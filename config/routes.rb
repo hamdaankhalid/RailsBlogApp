@@ -5,4 +5,12 @@ Rails.application.routes.draw do
   resources :articles do
     resources :comments
   end
+
+  get 'admin/login', to: 'admin_authentication#new'
+  post 'admin/login', to: 'admin_authentication#create'
+  delete 'admin/logout', to: 'admin_authentication#destroy'
+
+  post 'otp', to: 'token#create'
+
+  get 'admin', to: 'admin_panel#index'
 end

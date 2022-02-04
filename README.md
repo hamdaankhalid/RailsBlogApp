@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is going to be my new personal website and it's going to be mad slick.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Features
+Articles Section with admin upload, edit, destory
+Subscribe to new articles!
+slick AF about me.
+Resume section that can be changed dynamically via me
+subscribe to resume changes!
+API's to pull my info dynamically.
+Schedule Meetings with me
+Live chat 
+Video call
