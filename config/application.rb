@@ -10,7 +10,7 @@ module Blog
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
-
+    config.autoload_paths += %W(#{config.root}/lib)
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
@@ -18,5 +18,18 @@ module Blog
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+    config.action_mailer.smtp_settings = {
+      address:              'smtp.gmail.com',
+      port:                 587,
+      domain:               'example.com',
+      user_name:            ENV["GMAIL_USERNAME"],
+      password:             ENV["GMAIL_PASSWORD"],
+      authentication:       'plain',
+      enable_starttls_auto: true
+    }
+    config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+    config.exceptions_app = self.routes
   end
 end
