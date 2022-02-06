@@ -1,0 +1,9 @@
+<% if comment.status == "public" %>
+<div>
+    <strong>Commenter:</strong>
+    <%= comment.commenter%>
+<p>
+    <%= comment.body%>
+</p>
+</div>
+<% end %>

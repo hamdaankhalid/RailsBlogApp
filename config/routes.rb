@@ -1,16 +1,19 @@
 Rails.application.routes.draw do
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root "articles#index"
+  root "public/articles#index"
 
-  resources :articles do
-    resources :comments
+  get "about", :to => "public/about_me#index"
+  get "contact", :to => "public/contacts#index"
+  post "subscriptions", :to => "public/subscribe_article#create"
+
+  scope module: 'public' do
+    resources :experiences, :only => [:show, :index]
+    resources :articles, :only => [:show, :index] do
+      resources :comments, :only => [:create]
+    end
   end
-
-  get 'admin/login', to: 'admin_authentication#new'
-  post 'admin/login', to: 'admin_authentication#create'
-  delete 'admin/logout', to: 'admin_authentication#destroy'
-
-  post 'otp', to: 'token#create'
-
-  get 'admin', to: 'admin_panel#index'
 end

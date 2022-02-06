@@ -1,0 +1,16 @@
+<%= form_with model: [ @article, @article.comments.build ] do |form| %>
+    <p>
+        <%= form.label :commenter, :required => true%><br>
+        <%= form.text_field :commenter, :required => true %>
+    </p>
+
+    <p>
+        <%= form.label :body, :required => true %><br>
+        <%= form.text_area :body, :required => true %>
+    </p>
+
+    <p>
+        <%= form.submit %>
+    </p>
+
+<% end %>

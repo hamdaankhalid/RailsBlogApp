@@ -1,0 +1,13 @@
+<%= form_with model: subscription do |form| %>
+    <div style="margin:1% 0;">
+        <%= form.label :email, "Enter your email to subscribe for newer articles" %><br>
+        <%= form.text_field :email, :required => true %>
+        <% subscription.errors.full_messages_for(:email).each do |message| %>
+            <div> <%= message%> </div>
+        <% end %>
+    </div>
+
+    <div style="margin-bottom:1%;">
+        <%= form.submit "Subscribe" %>
+    </div>
+<% end %>

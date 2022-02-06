@@ -1,0 +1,24 @@
+<% content_for :title do %>
+  <%= @article.title %>
+<% end %>
+
+<div style="margin: 20px 0;">
+<h1>
+    <%= @article.title %>
+</h1>
+
+<div class="preformatted">
+    <%= @article.body %>
+</div>
+</div>
+
+<h2> Comments </h2>
+<% @article.comments.each do |comment| %>
+  <%= render comment %>
+<% end %>
+
+<div style="margin-bottom:25px;">
+<h2> Add a comment: </h2>
+<%= render 'public/comments/form'%>
+</div>
+

@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+
+ .contact-card {
+    margin: 2% 0;
+ }
+
+.images {
+   display: flex;
+   justify-content: space-around;
+   margin: 25px;
+}
+
+.responsive-image {
+   height: 250px;
+   width: 250px;
+}

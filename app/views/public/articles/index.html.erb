@@ -1,0 +1,21 @@
+<% content_for :title do %>
+  Articles
+<% end %>
+
+<h1>Engineering Articles</h1>
+
+<div style="margin: 2% 0;">
+Our blog has <%= Article.public_count %> articles and <%= Comment.public_count %> comments including comments that were filtered out asynchronously in a task queue &#128526;
+</div>
+
+<%= render 'public/subscribe_article/form', subscription: @subscription%>
+
+<% @articles.each do |article|%>
+        <% unless article.archived? %>
+            <div>
+                <strong><%=link_to "#{article.title}", article %></strong>
+                <p><%= article.body[0..41].gsub(/\s\w+\s*$/, '...') %>  <%= link_to "click here to read more.", article %></p>
+            </div>
+        <% end %>
+<% end %>
+
