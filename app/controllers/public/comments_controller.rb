@@ -5,7 +5,6 @@ class Public::CommentsController < Public::BaseController
       :commenter => comment_params["commenter"],
       :body => comment_params["body"],
       :status => "private")
-    # set it off for moderation in queue
     ModerateCommentJob.perform_later(@comment)
     redirect_to article_path(@article)
   end

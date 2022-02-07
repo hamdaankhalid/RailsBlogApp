@@ -4,7 +4,7 @@ ActiveAdmin.register Experience do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :organization, :title, :description, :started_at, :ended_at, :type, :order
+  permit_params :organization, :title, :description, :started_at, :ended_at, :order,  :type_of
   #
   # or
   #

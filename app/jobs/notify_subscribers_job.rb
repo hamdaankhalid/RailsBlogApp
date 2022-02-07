@@ -3,7 +3,7 @@ class NotifySubscribersJob < ApplicationJob
 
   def perform(article)
     Subscription.all.each do |subscriber|
-      NotifyArticlePublishedMailer.with(email: subscriber.email, article: article).notify.deliver_later
+      NotifyArticlePublishedMailer.with(email: subscriber.email, article: article).notify.deliver_now
     end
   end
 end

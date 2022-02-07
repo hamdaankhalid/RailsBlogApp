@@ -8,6 +8,7 @@ class Article < ApplicationRecord
   after_save :notify_subscribers
 
   private
+  
   def notify_subscribers
     if self.status == "public" && self.created_at == self.updated_at
       NotifySubscribersJob.perform_later self

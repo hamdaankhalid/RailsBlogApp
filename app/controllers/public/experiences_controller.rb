@@ -4,7 +4,7 @@ class Public::ExperiencesController < Public::BaseController
   end
 
   def show
-    @experience = JSON.pretty_generate(Experience.find(params[:id]).as_json)
+    @experience = JSON.pretty_generate(Experience.find(params[:id]).attributes.except("created_at", "updated_at", "id", "order").as_json)
   end
 
   private

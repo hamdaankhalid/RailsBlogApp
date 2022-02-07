@@ -1,6 +1,6 @@
 class WelcomeSubscriptionMailer < ApplicationMailer
     def welcome
-        @url = "http://localhost:3000/articles" # pull the base for the url from envvar
+        @url = "#{root_url}articles"
         mail(to: params[:email], subject: "Thank you for subscribing to Hamdaan Khalid Engineering!")
     end
 end
