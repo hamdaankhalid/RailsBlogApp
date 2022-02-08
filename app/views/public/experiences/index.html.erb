@@ -12,7 +12,11 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
+  <div style="background-color: white; margin: 15px 0px;">
+    Public API's for resume &#128521;<br>
+    <strong><%=  root_url %>api/v1/experiences</strong> : Get entire resume<br>
+    <strong><%= root_url %>api/v1/experiences/:id</strong> : Get details about a particular item on my resume
+  </div>
   <tbody>
     <% @experiences.each do |experience| %>
       <tr>

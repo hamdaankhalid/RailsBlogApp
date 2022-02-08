@@ -1,0 +1,1 @@
+json.(@experience, *@experience.attributes.keys)
