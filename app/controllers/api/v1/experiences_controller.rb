@@ -4,11 +4,11 @@ module Api
       def index
         @experiences = Experience.all.order(:order)
       end
-        
+
       def show
         @experience = Experience.find(params[:id])
       end
-        
+
       private
       def experience_params
         params.require(:experience).permit()
