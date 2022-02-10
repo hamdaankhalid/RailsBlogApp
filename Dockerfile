@@ -3,8 +3,6 @@ RUN apt-get update -qq \
   && apt-get install -y \
   # Needed for certain gems
   build-essential \
-  # Needed for postgres gem
-  libpq-dev \
   # Others
   nodejs \
   vim-tiny \   
@@ -24,5 +22,7 @@ COPY Gemfile /blog/Gemfile
 COPY Gemfile.lock /blog/Gemfile.lock
 RUN bundle install
 ADD . /blog
+
 EXPOSE 3000
+
 CMD bash -c "rm -f tmp/pids/server.pid && rails s -p 3000 -b '0.0.0.0'"
