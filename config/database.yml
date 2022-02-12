@@ -18,6 +18,8 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
+  username: postgres
+  password: postgres
   database: personal_app_test
 
 production:
