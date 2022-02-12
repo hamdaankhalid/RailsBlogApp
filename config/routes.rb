@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
-
   require 'sidekiq/web'
-  mount Sidekiq::Web => "/sidekiq";
   
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+
+  authenticate :admin_user do 
+    mount Sidekiq::Web => 'admin/sidekiq' 
+  end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root "public/articles#index"

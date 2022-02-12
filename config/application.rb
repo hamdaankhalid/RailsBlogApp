@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module Blog
   class Application < Rails::Application
+    Dotenv.load
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
     config.autoload_paths += %W(#{config.root}/lib)
