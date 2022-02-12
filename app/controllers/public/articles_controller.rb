@@ -1,10 +1,14 @@
-class Public::ArticlesController < Public::BaseController
-  def index
-    @articles = Article.all()
-    @subscription = Subscription.new
-  end
+# frozen_string_literal: true
 
-  def show
-    @article = Article.find(params[:id])
+module Public
+  class ArticlesController < Public::BaseController
+    def index
+      @articles = Article.all
+      @subscription = Subscription.new
+    end
+
+    def show
+      @article = Article.find(params[:id])
+    end
   end
 end

@@ -4,8 +4,9 @@
 4. Restrict return fields for experiences. DONE 
 5. Write an api version. DONE
 6. Move task queue out of main thread DONE
-7. Migrate to postgres DONE
-8. Secure sidekiq DONE
-9. CI-CD
-10. Deployment
-
+7. Migrate to ruby 3.0.0 DONE
+8. Migrate to postgres DONE
+9. Secure sidekiq DONE
+10. CI DONE
+11. Linter DONE
+12. CD

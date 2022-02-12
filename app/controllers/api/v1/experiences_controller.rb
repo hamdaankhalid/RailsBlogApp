@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Api
   module V1
     class ExperiencesController < Api::V1::BaseController
@@ -10,8 +12,9 @@ module Api
       end
 
       private
+
       def experience_params
-        params.require(:experience).permit()
+        params.require(:experience).permit
       end
     end
   end

@@ -1,6 +1,6 @@
-<%= form_with model: [ @article, @article.comments.build ] do |form| %>
+<%= form_with model: [@article, @article.comments.build] do |form| %>
     <p>
-        <%= form.label :commenter, :required => true%><br>
+        <%= form.label :commenter, :required => true %><br>
         <%= form.text_field :commenter, :required => true %>
     </p>
 

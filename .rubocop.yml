@@ -1,0 +1,12 @@
+require: rubocop-rails
+
+Style/Documentation:
+  Enabled: false
+
+AllCops:
+  Rails:
+    Enabled: true
+  Exclude:
+    - db/**/*
+    - config/initializers/devise.rb
+    - bin/**/*

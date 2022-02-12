@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RenameTypeToTypeOfInExperiences < ActiveRecord::Migration[6.1]
   def change
     rename_column :experiences, :type, :type_of

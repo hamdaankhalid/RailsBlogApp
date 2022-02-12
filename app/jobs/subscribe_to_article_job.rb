@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SubscribeToArticleJob < ApplicationJob
   queue_as :default
 
