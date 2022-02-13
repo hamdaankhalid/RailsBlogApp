@@ -9,4 +9,4 @@
 9. Secure sidekiq DONE
 10. CI DONE
 11. Linter DONE
-12. CD
+12. CD DONE
