@@ -9,9 +9,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 if Rails.env.development?
-  AdminUser.create!(email: "khalid.hamdaan@gmail.com", password: "adminpassword",
+  AdminUser.create!(email: "khalid.hamdaan@gmail.com", password: ENV["ADMIN_PASSWORD"],
                     password_confirmation: ENV["ADMIN_PASSWORD"])
 end
+
 Article.create!(
   title: "How to choose between opinionated vs un-opinionated frameworks as a beginner!",
   body: "One of the worst things about starting your journey as a software engineer is not even knowing what you don't know. We all start with the absolute fear of choosing the \"best language\", and eventually graduate to \"choosing the best framework\". Although eventually they all equal out, I do believe the latter question has some weight to it.
@@ -25,4 +26,49 @@ Article.create!(
 
     So my advice for anyone starting out would be to choose the un-opinionated framework in the language of your choice, set to build out something big and long term so that it is guaranteed that you will make design mistakes and see code flexibility decline over time. Then when you feel that you are doing repeated tasks to configure things, learn the more opinionated framework. It is bound to make more sense.",
   status: "public",
+)
+
+Experience.create!(
+  organization: 'Purdue University'
+  title: 'B.S. Mathematics'
+  description: 'As a mathematics undergraduate Student at Purdue. I had the opportunity to take courses including: Calculus, Linear Algebra, Real Analysis, Abstract Algebra, Numerical Analysis, Data Mine, CS-177, Statistics, and Regression Modeling'
+  started_at: '2017'
+  ended_at: '2020'
+  type_of: 'Education'
+  order: 6
+)
+
+Experience.create!(
+  organization: 'Root Insurance'
+  title: 'Software Engineer'
+  description: 'I started as an intern on the data science engineering team where I was responsible for prototyping the MVP for ETL processing using Grothendeick Construction with ECS cluster, lambdas, Aws Stepfunctions, and Terraform. I switched to full time Engineer on our Data Science productivity team in February 2021 where I came up with and created Rrocket, an in-house software that enabled Data Scientists and Actuaries to write functional R programs locally, abstract away dockerizing, and transform every program to a functional lambda component that could be plugged and chugged into AWS Sagemaker processing jobs, without any involvement of an Engineer. On the Customer Engagement Team I delivered the full stack features for the projects Full Term Savings, and Secure Password that involved frontend changes to our mobile, and web application, rails backend, and included AB testing for customer engagement. I also worked on squashing bugs every sprint.'
+  started_at: 'October 2020'
+  ended_at: 'November 2021'
+  type_of: 'Job'
+  order: 2
+)
+
+Experience.create!(
+  organization: 'Attune Inc'
+  title: 'Software Engineer'
+  description: 'Full stack product software engineer at Attune, working on our node js and Typescript backend and angular frontend. I work on onboarding flows for products on our marketplace platform.'
+  started_at: 'November 2021'
+  ended_at: 'Current'
+  type_of: 'Job'
+  order: 1
+)
+
+Experience.create!(
+  organization: 'Skills'
+  title: 'Backend & Frontend Software Engineering Skills'
+  description: 'Languages: Ruby, Python, Javascript, Typescript, Golang
+  Backend Frameworks: Rails, Django, Flask, Express, Nest.
+  Frontend: Javascript, Typescript, CSS, HTML.
+  Frontend Frameworks: React & Angular.
+  Databases: Postgresql, Sqlite, MongoDb, DynamoDb, Redis.
+  Devops: Docker, Terraform, Kubernetes.'
+  started_at:
+  ended_at:
+  type_of: 'Skills'
+  order: 5
 )
