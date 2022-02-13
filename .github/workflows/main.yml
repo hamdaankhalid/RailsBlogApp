@@ -39,7 +39,7 @@ jobs:
           POSTGRES_PASSWORD: postgres
         run: |
           sudo apt-get -yqq install libpq-dev
-          gem install bundler -v '~>2.3.7'
+          gem install bundler -v '~>2.1.4'
           bundle install --jobs 4 --retry 3
           bundle exec rubocop .
           bundle exec rails db:create
