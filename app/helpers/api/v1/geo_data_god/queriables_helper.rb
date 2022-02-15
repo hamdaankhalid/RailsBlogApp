@@ -1,2 +1,10 @@
-module Api::V1::GeoDataGod::QueriablesHelper
+# frozen_string_literal: true
+
+module Api
+  module V1
+    module GeoDataGod
+      module QueriablesHelper
+      end
+    end
+  end
 end
