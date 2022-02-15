@@ -27,6 +27,9 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :experiences, only: %i[show index], defaults: { format: 'json' }
+      namespace :geo_data_god do
+        get '/query', to: 'queriables#index', defaults: { format: 'json' }
+      end
     end
   end
 end
