@@ -41,6 +41,7 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'jquery-rails'
 gem 'listen', '~> 3.3'
+gem 'pr_geohash'
 gem 'rake'
 gem 'swearjar'
 
