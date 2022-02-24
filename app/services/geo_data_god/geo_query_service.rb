@@ -1,17 +1,22 @@
 # frozen_string_literal: true
 
-# given a query, find the right prefix
 module GeoDataGod
   class GeoQueryService
-    def prefix(_lat, _long, _radius)
+    def initialize(geohash_service)
+      @geohash_service = geohash_service
+    end
+
+    def prefix(lat, long, radius)
       # figure out the precision needed to encode based on radius
-      # return that return prefix
-      ''
+      precision_value = precision(radius)
+      @geohash_service.encode(lat, long, precision_value)
     end
 
     private
 
     def precision(_radius)
+      # based on radius we decide precision
+      6
     end
   end
 end

@@ -9,15 +9,15 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 if Rails.env.development?
-  AdminUser.create!(email: "khalid.hamdaan@gmail.com", password: ENV["ADMIN_PASSWORD"],
-                    password_confirmation: ENV["ADMIN_PASSWORD"])
+  AdminUser.create!(email: 'khalid.hamdaan@gmail.com', password: ENV['ADMIN_PASSWORD'],
+                    password_confirmation: ENV['ADMIN_PASSWORD'])
 end
 
 # Article.create!(
 #   title: "How to choose between opinionated vs un-opinionated frameworks as a beginner!",
 #   body: "One of the worst things about starting your journey as a software engineer is not even knowing what you don't know. We all start with the absolute fear of choosing the \"best language\", and eventually graduate to \"choosing the best framework\". Although eventually they all equal out, I do believe the latter question has some weight to it.
 #     The right answer is almost always found in \"what are you the most productive in\" and \"what is the best tool for the job\". However, when you're a noob it's slightly more complicated. I started my journey with Django, I knew it was used by big tech companies, and Python was my go to language back then.
-    
+
 #     If you have used Django before you would know that Django is what is considered a \"batteries-included\" framework. It has tons of functionalities built in, and you can take an idea and just code away with it. This sounds great, but for me personally this sucked. I hated the fact that I had gone from learning about SOLID to building web applications in a week with so many layers of abstraction aka magic in between. The imposter syndrome kicked in and I knew it was time to level up...or level down in a sense.
 
 #     I knew I had skipped a lot of steps between barebones python CLI and Django, a stride too big for me to comprehend. So I switched to flask, flask is a lightweight framework. If I wanted to do something I either wrote it in scratch or I used an external library I had to configure into my application. This was great because now I had the ability to understand almost every file, and every line of codebase in my application. Eventually I graduated from making entire applications in 1 single \"app.py\" file to writing more maintainable code. I realized that there was a pattern, certain directory structures, and certain patterns were needed as my application codebase grew. I had to deal with and figure out circular dependencies when the issue came up, ORM's had to be picked and configured, and directory structures had to adapt. I eventually realized what was happening, my flask monolith looked pretty close to what Django had looked like. This is when I decided to go back to Django, and suddenly it made a whole lot more sense. After having an understanding of doing something from scratch I appreciated the cli tools that removed the burden of repeated tasks that I had to do with flask.
