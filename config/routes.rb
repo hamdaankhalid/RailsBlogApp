@@ -29,4 +29,8 @@ Rails.application.routes.draw do
       resources :experiences, only: %i[show index], defaults: { format: 'json' }
     end
   end
+
+  get 'chat-room', to: 'chat_room/rooms#show'
+
+  mount ActionCable.server => '/cable'
 end
