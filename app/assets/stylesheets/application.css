@@ -28,3 +28,14 @@
    height: 250px;
    width: 250px;
 }
+
+.message-room {
+   height: 60vh;
+   margin-right: auto; margin-left: auto; width: 800px;
+   overflow: scroll;
+}
+
+.submit-message {
+   margin-top: 5px;
+   margin-right: auto; margin-left: auto; width: 800px;
+}

@@ -1,15 +1,18 @@
 <h1>
-Chat Room
+Live Chat Room (Websocket Implementation)
 </h2>
 
-<div id="messages">
+<div id="messages" class="message-room">
   <% @messages.each do |message|%>
       <%= render "chat_room/message", message: message %>
   <% end %>
 </div>
 
-<form id="send_message">
-  <input type="text" id="message" name="message">
-  <input type="text" id="author" name="author">
-  <button id="chat-submit">Send</button>
-</form>
+<div class="submit-message">
+  <form id="send_message">
+    <input type="text" id="message" name="message" placeholder="message" required>
+    <input type="text" id="author" name="author" placeholder="author" required>
+    <br>
+    <button id="chat-submit">Send</button>
+  </form>
+</div>
