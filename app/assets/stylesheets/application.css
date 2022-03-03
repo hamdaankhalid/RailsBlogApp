@@ -15,27 +15,34 @@
  */
 
  .contact-card {
-    margin: 2% 0;
- }
+   margin: 2% 0;
+}
 
 .images {
-   display: flex;
-   justify-content: space-around;
-   margin: 25px;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  margin-right: auto; margin-left: auto; width: 95%;
 }
 
 .responsive-image {
-   height: 250px;
-   width: 250px;
+  height: 250px;
+  width: 250px;
 }
 
 .message-room {
-   height: 60vh;
-   margin-right: auto; margin-left: auto; width: 800px;
-   overflow: scroll;
+  height: 45vh;
+  margin-right: auto; margin-left: auto; width: 95%;
+  overflow: scroll;
+}
+
+.message {
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .submit-message {
-   margin-top: 5px;
-   margin-right: auto; margin-left: auto; width: 800px;
+  margin-top: 5px;
+  margin-right: auto; margin-left: auto; width: 70%;
 }
