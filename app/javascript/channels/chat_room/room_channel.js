@@ -29,16 +29,16 @@ document.addEventListener('readystatechange', function() {
 
 function appendMessage(data){
   const lilDiv = document.createElement('div');
-  const styledAuthor = document.createElement('span');
+  const styledAuthor = document.createElement('strong');
   const author = document.createTextNode(`${data.author}:`);
-  styledAuthor.style.fontWeight = "bold";
   styledAuthor.appendChild(author);
 
   lilDiv.appendChild(styledAuthor);
   lilDiv.appendChild(
     document.createTextNode(`\u00A0${data.content}`)
   );
-  lilDiv.style = "display: inline-flex";
+
+  lilDiv.className = "message";
 
   messages.appendChild(
     lilDiv

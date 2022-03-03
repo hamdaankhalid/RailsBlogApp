@@ -35,6 +35,11 @@
    overflow: scroll;
 }
 
+.message {
+   margin-top: 15px;
+   margin-bottom: 15px;
+}
+
 .submit-message {
    margin-top: 5px;
    margin-right: auto; margin-left: auto; width: 800px;
