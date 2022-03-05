@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   post 'subscriptions', to: 'public/subscribe_article#create'
 
   scope module: 'public' do
+    get 'projects', to: 'projects#index'
     resources :experiences, only: %i[show index]
     resources :articles, only: %i[show index] do
       resources :comments, only: [:create]

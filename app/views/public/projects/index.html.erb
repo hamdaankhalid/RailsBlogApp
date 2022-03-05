@@ -1,0 +1,9 @@
+<% content_for :title do %>
+  Personal Projects
+<% end %>
+
+<div class="projects">
+  <% @personal_projects.each do |personal_project| %>
+    <%= render 'public/personal_project/personal_project', personal_project: personal_project %>
+  <% end %>
+</div>
