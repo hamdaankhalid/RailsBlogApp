@@ -1,0 +1,17 @@
+<div class="project">
+  <div class="project-title">
+    <%= personal_project.title %>
+  </div>
+
+  <% unless personal_project.url.nil?%>
+    <div class="project-url">
+      <a href="<%= personal_project.url %>"><%= personal_project.url %></a>
+    </div>
+  <% end %>
+
+  <div class=project-description>
+    <p>
+      <%= personal_project.description %>
+    </p>
+  </div>
+</div>

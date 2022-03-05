@@ -46,3 +46,21 @@
   margin-top: 5px;
   margin-right: auto; margin-left: auto; width: 70%;
 }
+
+.projects {
+  margin: 50px;
+}
+
+.project {
+  background-color: rgb(231, 224, 224);
+  margin: 20px;
+  padding: 5px;
+}
+
+.project-title {
+  font-weight: bold;
+}
+
+.project-description {
+  /* white-space: pre-line; */
+}
