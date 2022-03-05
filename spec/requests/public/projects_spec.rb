@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe 'Public::Projects', type: :request do
-  describe 'GET /index' do
+  describe 'GET /project' do
     it 'returns http success' do
-      get '/public/projects/index'
+      get '/projects'
       expect(response).to have_http_status(:success)
     end
   end
