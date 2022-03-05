@@ -39,6 +39,7 @@ function appendMessage(data){
     document.createTextNode(`\u00A0${data.content}`)
   );
   lilDiv.style = "display: inline-flex";
+  lilDiv.class = "message"
 
   messages.appendChild(
     lilDiv
