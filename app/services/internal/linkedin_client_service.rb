@@ -3,7 +3,8 @@ module Internal
     def initialize
     end
 
-    def post
+    def share_article(post_body, url)
+      puts "Linkedin sent #{post_body}, #{url}"
     end
   end
 end

@@ -13,8 +13,11 @@
     <% @internal_linkedin_schedulers.each do |internal_linkedin_scheduler| %>
       <tr>
         <td><%= link_to 'Show', internal_linkedin_scheduler %> <%= internal_linkedin_scheduler.article.title %></td>
-        <td><%= link_to 'Edit', edit_internal_linkedin_scheduler_path(internal_linkedin_scheduler) %></td>
-        <td><%= link_to 'Destroy', internal_linkedin_scheduler, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% unless internal_linkedin_scheduler.sent %>
+          <td><%= link_to 'Edit', edit_internal_linkedin_scheduler_path(internal_linkedin_scheduler) %></td>
+          <td><%= link_to 'Destroy', internal_linkedin_scheduler, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+        <td>Sent: <%= internal_linkedin_scheduler.sent %></td>
       </tr>
     <% end %>
   </tbody>
