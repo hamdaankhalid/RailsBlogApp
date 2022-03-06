@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+
   require 'sidekiq/web'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -8,6 +9,9 @@ Rails.application.routes.draw do
 
   authenticate :admin_user do
     mount Sidekiq::Web => 'admin/sidekiq'
+    namespace :internal do
+      resources :linkedin_schedulers
+    end
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

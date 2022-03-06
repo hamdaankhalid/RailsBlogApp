@@ -1,0 +1,32 @@
+<%= form_with(model: internal_linkedin_scheduler) do |form| %>
+  <% if internal_linkedin_scheduler.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(internal_linkedin_scheduler.errors.count, "error") %> prohibited this internal_linkedin_scheduler from being saved:</h2>
+
+      <ul>
+        <% internal_linkedin_scheduler.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :article_id, :required => true %>
+    <%= form.number_field :article_id, :required => true %>
+  </div>
+
+  <div>
+    <%= form.label :post_body, :required => true %>
+    <%= form.text_area :post_body, :required => true %>
+  </div>
+
+  <div>
+    <%= form.label :schedule_for, :required => true %>
+    <%= form.datetime_select :schedule_for, :required => true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

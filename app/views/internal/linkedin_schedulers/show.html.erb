@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<div>
+  <%= @internal_linkedin_scheduler.article.title %>
+</div>
+
+<div>
+  <%= @internal_linkedin_scheduler.schedule_for %>
+</div>
+
+<div>
+  <%= @internal_linkedin_scheduler.post_body %>
+</div>
+
+<%= link_to 'Edit', edit_internal_linkedin_scheduler_path(@internal_linkedin_scheduler) %> |
+<%= link_to 'Back', internal_linkedin_schedulers_path %>

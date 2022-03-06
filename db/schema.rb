@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_05_062240) do
+ActiveRecord::Schema.define(version: 2022_03_05_191941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,15 @@ ActiveRecord::Schema.define(version: 2022_03_05_062240) do
     t.integer "order"
   end
 
+  create_table "internal_linkedin_schedulers", force: :cascade do |t|
+    t.datetime "schedule_for"
+    t.text "post_body"
+    t.bigint "article_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["article_id"], name: "index_internal_linkedin_schedulers_on_article_id"
+  end
+
   create_table "messages", force: :cascade do |t|
     t.text "content"
     t.text "author"
@@ -102,4 +111,5 @@ ActiveRecord::Schema.define(version: 2022_03_05_062240) do
   end
 
   add_foreign_key "comments", "articles"
+  add_foreign_key "internal_linkedin_schedulers", "articles"
 end
