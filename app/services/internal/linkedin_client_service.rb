@@ -6,9 +6,9 @@ module Internal
       @api_token = token
     end
 
-    def share_article(_article_title, _post_body, _content_url)
-      response = http.start do |t|
-        t.request(request)
+    def share_article(article_title, post_body, content_url)
+      response = http(share_endpoint_uri).start do |t|
+        t.request(request( content_url, article_title, post_body))
       end
 
       case response
@@ -21,7 +21,7 @@ module Internal
 
     private
 
-    def request
+    def request(content_url, article_title, post_body)
       request = Net::HTTP::Post.new(share_endpoint_uri.path)
       request.body = json_params(content_url, article_title, post_body)
       request['Authorization'] = "Bearer #{@api_token}"
