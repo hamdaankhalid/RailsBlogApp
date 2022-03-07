@@ -25,17 +25,13 @@ module Internal
     end
 
     def update
-      # cant update if sent
-      # invalidate job by deleteing from db, this will cause silent fail by deserialization error in worker
       redirect_or_delete(params[:id])
       create_and_enqueue_post(linkedin_scheduler_params)
       redirect_to internal_linkedin_schedulers_path
     end
 
     def destroy
-      # cant destroy if sent
       redirect_or_delete(params[:id])
-      # the job will fail if it was previously set since there will be deserialization error
       redirect_to internal_linkedin_schedulers_path
     end
 
@@ -47,17 +43,14 @@ module Internal
     end
 
     def redirect_if_already_sent(schedule)
-      if schedule.sent
-        redirect_to internal_linkedin_schedulers_path
-      end
+      redirect_to internal_linkedin_schedulers_path if schedule.sent
     end
 
     def create_and_enqueue_post(linkedin_scheduler_params)
-      linkedinSchedule = LinkedinScheduler.create!(linkedin_scheduler_params)
-      puts "HEYYYO #{linkedinSchedule.id}"
-      # Time.zone = "Pacific Time (US & Canada)"
-      schedule_for_utc = linkedinSchedule.schedule_for.utc
-      SchedulePostJob.set(wait_until: schedule_for_utc).perform_later(linkedinSchedule.id)
+      linkedin_schedule = LinkedinScheduler.create!(linkedin_scheduler_params)
+      schedule_for_utc = linkedin_schedule.schedule_for.utc
+
+      SchedulePostJob.set(wait_until: schedule_for_utc).perform_later(linkedin_schedule.id)
     end
 
     def linkedin_scheduler_params

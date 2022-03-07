@@ -10,4 +10,8 @@ AllCops:
     - db/**/*
     - config/initializers/devise.rb
     - bin/**/*
-    -  vendor/**/*
+    - vendor/**/*
+    - config/routes.rb
+
+Metrics/BlockLength:
+  IgnoredMethods: ['describe', 'context']

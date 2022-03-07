@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-
   require 'sidekiq/web'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
