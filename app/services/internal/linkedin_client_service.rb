@@ -8,7 +8,7 @@ module Internal
 
     def share_article(article_title, post_body, content_url)
       response = http(share_endpoint_uri).start do |t|
-        t.request(request( content_url, article_title, post_body))
+        t.request(request(content_url, article_title, post_body))
       end
 
       case response
