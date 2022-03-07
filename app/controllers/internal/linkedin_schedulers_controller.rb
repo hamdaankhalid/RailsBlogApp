@@ -49,7 +49,7 @@ module Internal
     def create_and_enqueue_post(linkedin_scheduler_params)
       linkedin_schedule = LinkedinScheduler.create!(linkedin_scheduler_params)
       schedule_for_utc = linkedin_schedule.schedule_for.utc
-      SchedulePostJob.new(linkedin_schedule.id).set(wait_until: schedule_for_utc).perform_later
+      SchedulePostJob.set(wait_until: schedule_for_utc).perform_later(linkedin_schedule.id)
     end
 
     def linkedin_scheduler_params

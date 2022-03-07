@@ -3,13 +3,8 @@
 class SchedulePostJob < ApplicationJob
   queue_as :default
 
-  def initialize(id)
-    super()
-    @linkedin_schedule_id = id
-  end
-
-  def perform
-    linkedin_schedule = Internal::LinkedinScheduler.find(@linkedin_schedule_id)
+  def perform(id)
+    linkedin_schedule = Internal::LinkedinScheduler.find(id)
     return unless linkedin_schedule.created_at != linkedin_schedule.updated_at
 
     url = build_url(linkedin_schedule.id)
