@@ -7,7 +7,7 @@ class SchedulePostJob < ApplicationJob
     linkedin_schedule = Internal::LinkedinScheduler.find(id)
     return unless linkedin_schedule.created_at == linkedin_schedule.updated_at
 
-    url = build_url(linkedin_schedule.id)
+    url = build_url(linkedin_schedule.article.id)
     li_client = Internal::LinkedinClientService.new(ENV['LI_TOKEN'])
     li_client.share_article(linkedin_schedule.article.title, linkedin_schedule.post_body, url)
     linkedin_schedule.update(sent: true)
