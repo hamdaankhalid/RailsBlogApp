@@ -5,7 +5,7 @@ class SchedulePostJob < ApplicationJob
 
   def perform(id)
     linkedin_schedule = Internal::LinkedinScheduler.find(id)
-    return unless linkedin_schedule.created_at == linkedin_schedule.updated_at
+    #return unless linkedin_schedule.created_at == linkedin_schedule.updated_at
 
     url = build_url(linkedin_schedule.article.id)
     li_client = Internal::LinkedinClientService.new(ENV['LI_TOKEN'])
