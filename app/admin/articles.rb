@@ -6,7 +6,7 @@ ActiveAdmin.register Article do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :title, :body, :status
+  permit_params :title, :body, :status, :internal_linkedin_schedulers
   #
   # or
   #
