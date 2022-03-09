@@ -9,6 +9,8 @@ class SchedulePostJob < ApplicationJob
     li_client = Internal::LinkedinClientService.new(ENV['LI_TOKEN'])
     li_client.share_article(linkedin_schedule.article.title, linkedin_schedule.post_body, url)
     linkedin_schedule.update(sent: true)
+  rescue ActiveRecord::RecordNotFound
+    # this means the schedule was cancelled or edited, we just want this to finish and not throw errors
   end
 
   private
