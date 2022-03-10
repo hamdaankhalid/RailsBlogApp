@@ -23,12 +23,14 @@
   justify-content: space-around;
   margin-top: 25px;
   margin-bottom: 25px;
-  margin-right: auto; margin-left: auto; width: 95%;
+  margin-right: auto; margin-left: auto;
 }
 
 .responsive-image {
-  height: 250px;
-  width: 250px;
+  height: 40%;
+  width: 40%;
+  max-height: 400px !important;
+  max-width: 400px !important;
 }
 
 .message-room {
@@ -47,14 +49,27 @@
   margin-right: auto; margin-left: auto; width: 70%;
 }
 
-.projects {
-  margin: 50px;
-}
-
 .project {
   background-color: rgb(231, 224, 224);
   margin: 20px;
   padding: 5px;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .projects {}
+
+  .project {
+    background-color: rgb(231, 224, 224);
+    /* margin: 20px;
+    padding: 5px; */
+    width: 100%;
+  }
+
+  .responsive-image {
+    height: 200px;
+    width: 200px;
+  }
 }
 
 .project-title {
