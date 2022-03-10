@@ -63,4 +63,9 @@
 
 .project-description {
   /* white-space: pre-line; */
+  word-wrap: break-word;
+}
+
+.project-url {
+  word-wrap: break-word;    
 }
