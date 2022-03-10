@@ -12,3 +12,6 @@ This is going to be my new personal website and it's going to be mad slick.
 - Live video and audio streaming
 - Ability to schedule outreach campaigns on Linkedin via internal dashboard I wrote.
 - Currently coding a live geo query api feature.
+
+## Pre-Release NOtes:
+- Set rails env to production and run rails assets:clean assets:precompile, then add, commit and push
