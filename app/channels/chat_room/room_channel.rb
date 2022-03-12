@@ -11,8 +11,13 @@ module ChatRoom
     end
 
     def speak(data)
+      message_body = data['content']
+      author = data['author']
       # save data to table and broadcast
-      Message.create!(content: data['content'], author: data['author'])
+      sj = Swearjar.default
+      return if sj.profane?(message_body) || sj.profane?(author)
+
+      Message.create!(content: message_body, author: author)
       ActionCable.server.broadcast 'room_channel', data
     end
   end

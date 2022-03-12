@@ -56,7 +56,6 @@ chatSubmitButton.addEventListener('click', function(event) {
     "author": author.value
   });
   message.value = '';
-  author.value = '';
 });
 
 }});
