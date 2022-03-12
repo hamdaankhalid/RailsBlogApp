@@ -33,9 +33,7 @@ gem 'dotenv'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
-gem 'sidekiq'
-gem 'sinatra'
-
+gem 'sidekiq', '~> 5.2.8'
 gem 'activeadmin'
 gem 'bootstrap-sass'
 gem 'devise'
