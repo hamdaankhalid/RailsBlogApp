@@ -34,6 +34,10 @@ Rails.application.routes.draw do
     end
   end
 
+namespace :real_time_geo_system do
+  get '/', to: 'real_time_geo_system#index'
+end
+
   get 'chat-room', to: 'chat_room/rooms#show'
 
   mount ActionCable.server => '/cable'
