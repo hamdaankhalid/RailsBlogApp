@@ -50,7 +50,7 @@ RSpec.describe RealTimeGeoSystem::GeoSpatialDataStoreService do
                                         unit: 'mi',
                                         querier_id: '1abcde'
                                       })
-      expect(query_result).to eq([["a", "0.0001"]])
+      expect(query_result).to eq([['a', '0.0001']])
     end
 
     it 'throws argumet exception when in-valid params are passed' do
