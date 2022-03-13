@@ -2,5 +2,7 @@
 
 module RealTimeGeoSystem
   class RealTimeGeoSystemController < ApplicationController
+    def index
+    end
   end
 end
