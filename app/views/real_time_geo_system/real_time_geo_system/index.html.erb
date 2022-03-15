@@ -3,6 +3,11 @@
 <% end %>
 
 <div>
-  Here the user will be assigned an identifier, they can share a url with the identifier attached as identifier
-  with other people and the user can then query these poeple in real time.
+  Share this url with those you wish to track live:
+  <%= link_to @url_for_queriables, "#{@url_for_queriables}" %>
+</div>
+
+<div>
+  Visit this url to track those you shared the link with live: 
+  <%= link_to @url_for_querier, "#{@url_for_querier}" %>
 </div>
