@@ -1,13 +1,28 @@
+import { start } from "@popperjs/core";
 import consumer from "../consumer";
 
 const GEO_SYSTEM_PATHS = [
   new URLPattern({ pathname: "/real_time_geo_system/:id" }),
-  new URLSearchParams({ pathname: "/real_time_geo_system/querier_panel/:id" }),
+  new URLPattern({ pathname: "/real_time_geo_system/querier_panel/:id" }),
 ];
 
+const QUERIABLE_PAGE = "queriable";
+const QUERIER = "querier";
+
+// elements used by queriables page
+let latitudeDiv;
+let longitudeDiv;
+let trackingSwitch;
+let trackMe = false;
+
 document.addEventListener("turbolinks:load", function () {
-  if (!isPathMatch(window.location.pathname)) {
+  let page;
+  let currentPath = window.location.pathname;
+
+  if (!isPathMatch(currentPath)) {
     return;
+  } else{
+    page = GEO_SYSTEM_PATHS[0].test(currentPath) ? QUERIABLE_PAGE : QUERIER;
   }
 
   const realTimeGeoSystem = consumer.subscriptions.create(
@@ -63,5 +78,36 @@ document.addEventListener("turbolinks:load", function () {
       }
     }
     return false;
+  }
+
+  // grab reference to elements by ids
+  if (page === QUERIABLE_PAGE) {
+    referQueriablePageElements();
+    console.log("instantiation of queriable page")
+    instantiateQueriablePage();
+  }
+
+  if (page === QUERIER) {
+    referQuerierPageElements();
+  }
+
+  function referQuerierPageElements() {
+    latitudeDiv = Document.getElementById('latitude');
+    longitudeDiv = Document.getElementById('longitude');
+    trackingSwitch = Document.getElementById('trackingSwitch');
+  }
+
+  function instantiateQueriablePage() {
+    console.log("adding event listener")
+
+    trackingSwitch.addEventListener('click', () => {
+      trackMe = !trackMe;
+      const buttonText = trackMe ? "Stop tracking" : 'Start Tracking';
+      trackingSwitch.textContent = buttonText;
+    });
+  }
+
+  function referQueriablePageElements() {
+    // to be implemented
   }
 });
