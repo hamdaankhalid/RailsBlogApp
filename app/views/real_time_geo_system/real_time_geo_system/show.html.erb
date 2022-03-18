@@ -1,0 +1,27 @@
+<% content_for :title do %>
+  Queriables
+<% end %>
+
+<div>
+
+<div>
+Your Unique user id is: 
+  <div id="queriableId">
+  <%= @queriable_id %>
+  </div>
+</div>
+  <div>
+    <div>
+      <h3> Latitude </h3>
+      <p id='latitude'></p>
+    </div>
+    <div>
+      <h3> Longitude </h4>
+      <p id='longitude'></p>
+    </div>
+
+    <button id="trackingSwitch" style="color: #4CAF50;">
+    Start Tracking Me
+    </button>
+  </div>
+</div>

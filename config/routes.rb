@@ -36,6 +36,8 @@ Rails.application.routes.draw do
 
 namespace :real_time_geo_system do
   get '/', to: 'real_time_geo_system#index'
+  get '/:id', to: 'real_time_geo_system#show'
+  get '/querier_panel/:id', to: 'real_time_geo_system#querier_panel'
 end
 
   get 'chat-room', to: 'chat_room/rooms#show'
