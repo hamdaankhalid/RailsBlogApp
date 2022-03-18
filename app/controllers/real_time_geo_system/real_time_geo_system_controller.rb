@@ -14,6 +14,7 @@ module RealTimeGeoSystem
 
     def show
       # this page has an id. the ID corresponds to a querier ID.
+      @queriable_id = SecureRandom.uuid
     end
 
     def querier_panel

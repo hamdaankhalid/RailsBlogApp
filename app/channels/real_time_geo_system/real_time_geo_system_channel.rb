@@ -2,9 +2,13 @@
 
 module RealTimeGeoSystem
   class RealTimeGeoSystemChannel < ApplicationCable::Channel
+    def initialize(connection, identifier, params)
+      super(connection, identifier, params)
+      redis_connection = Factories::RedisFactory.create
+      @geo_spatial_data_store_service = RealTimeGeoSystem::GeoSpatialDataStoreService.new(redis_connection)
+    end
+
     def subscribed
-      Rails.logger.debug 'subscribed'
-      # _#{params[:querier_id]}
       stream_from 'real_time_geo_system_channel'
     end
 
@@ -19,7 +23,10 @@ module RealTimeGeoSystem
     end
 
     def send_location_to_server(data)
-      # a queriable sends this to server along with the querier_id
+      @geo_spatial_data_store_service.add(
+        querier_id: data['querier_id'], latitude: data['latitude'],
+        longitude: data['longitude'], queriable_id: data['queriable_id']
+      )
     end
   end
 end

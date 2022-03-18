@@ -3,8 +3,13 @@
 <% end %>
 
 <div>
-  Here a queriable can choose to start and stop their tracking.
 
+<div>
+Your Unique user id is: 
+  <div id="queriableId">
+  <%= @queriable_id %>
+  </div>
+</div>
   <div>
     <div>
       <h3> Latitude </h3>
@@ -15,8 +20,8 @@
       <p id='longitude'></p>
     </div>
 
-    <button id="trackingSwitch">
-    Start Tracking
+    <button id="trackingSwitch" style="color: #4CAF50;">
+    Start Tracking Me
     </button>
   </div>
 </div>

@@ -8,7 +8,7 @@ module RealTimeGeoSystem
 
     def add(params)
       validate_add(params)
-      @db.geoadd(params[:querier_id], [params[:latitude], params[:longitude], params[:queriable_id]])
+      @db.geoadd(params[:querier_id], [params[:longitude], params[:latitude], params[:queriable_id]])
     end
 
     def query(params)
