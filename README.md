@@ -11,4 +11,4 @@ This is going to be my new personal website and it's going to be mad slick.
 - Live chat room written by me
 - Live video and audio streaming
 - Ability to schedule outreach campaigns on Linkedin via internal dashboard I wrote.
-- Currently coding a live geo query api feature.
+- live geo query feature (Similar to find my friends, Uber driver and ride tracking feature)/

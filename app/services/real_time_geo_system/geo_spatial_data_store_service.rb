@@ -8,13 +8,15 @@ module RealTimeGeoSystem
 
     def add(params)
       validate_add(params)
-      @db.geoadd(params[:querier_id], [params[:longitude], params[:latitude], params[:queriable_id]])
+      added = @db.geoadd(params[:querier_id], [params[:longitude], params[:latitude], params[:queriable_id]])
+      @db.expire(params[:queriable_id], 500)
+      added
     end
 
     def query(params)
       validate_query(params)
       @db.georadius([params[:querier_id], params[:longitude], params[:latitude], params[:radius], params[:unit]],
-                    count: params[:limit], options: 'WITHDIST')
+                    count: params[:limit], options: %w[WITHDIST WITHCOORD])
     end
 
     private

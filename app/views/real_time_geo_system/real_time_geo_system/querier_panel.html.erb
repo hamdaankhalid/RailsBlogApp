@@ -2,8 +2,44 @@
   Querier Panel
 <% end %>
 
+<div style="margin: 10px 0px;">
+ By default all queries will return you the 10 closest active people who you shared your link with.
+</div>
+
+<div style="margin: 10px 0px; word-wrap: break-word;">
+  If you want to track more locations in real time. Share this url with more people:
+  <%= link_to @url_for_queriables, "#{@url_for_queriables}" %>
+</div>
+
+<div style="margin: 10px 0px;">
+  <div>
+    <label for="radius">Query Radius From Me:</label> <br>
+    <input type="number" id="radius" name="radius">
+  </div>
+
+  <div>
+    <label for="unit">Choose a unit for radius:</label> <br>
+    <select id="unit" name="unit">
+      <option value="m">Meters</option>
+      <option value="km">Kilometers</option>
+      <option value="mi" selected>Miles</option>
+    </select>
+  </div>
+</div>
+
+<button id="querySwitch" style="color: #4CAF50;">
+   Start Querying
+</button>
+
 <div>
-  Here a querier puts in radius in miles, and their current location, and begins real time queries.
-  If the input changes the queries are also changed acordingly and straming continues, till user explictly
-  stops streaming.
+
+  <table>
+    <thead>
+			<th>QueriableId</th>
+			<th>Distance</th>
+			<th>Long, Lat</th>
+		</thead>
+    <tbody id="results">
+    </tbody>
+	</table>
 </div>
