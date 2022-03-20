@@ -8,13 +8,12 @@ const GEO_SYSTEM_PATHS = [
 const QUERIABLE_PAGE = "queriable";
 const QUERIER = "querier";
 
-// elements used by queriables page
+// Used by queriables page
 let latitudeDiv;
 let longitudeDiv;
 let trackingSwitch;
 let channelId;
 let queriableId;
-
 let trackMe = {
   val: false,
   observers: [],
@@ -26,6 +25,13 @@ let trackMe = {
     this.observers.forEach((x) => x.notify());
   },
 };
+
+// Used by queriers page
+let trackQueriables = false;
+let querySwitch;
+let radiusInput;
+let unitInput;
+let resultsTable;
 
 document.addEventListener("turbolinks:load", function () {
   let page;
@@ -44,10 +50,14 @@ document.addEventListener("turbolinks:load", function () {
 
   if (page === QUERIER) {
     referQuerierPageElements();
+    instantiateQuerierPage();
   }
 
-  const realTimeGeoSystem = consumer.subscriptions.create(
-    "RealTimeGeoSystem::RealTimeGeoSystemChannel",
+  /***** WEB SOCKET LOGIC *************/
+  const realTimeGeoSystem = consumer.subscriptions.create({
+    channel: "RealTimeGeoSystem::RealTimeGeoSystemChannel",
+    id: channelId
+  },
     {
       connected() {
         // Called when the subscription is ready for use on the server
@@ -58,13 +68,27 @@ document.addEventListener("turbolinks:load", function () {
       },
 
       received(data) {
-        // Called when there's incoming data on the websocket for this channel
-        // if data is recieved is for querier panel go ahead and updateQueryPanel
-        // ignore data for querier panel unless querier has turned on the flag
+        switch (data.event_type) {
+          case "queriable_data_updated":
+            // if we are on query panel page we should react to this event
+            if(page === QUERIER && trackQueriables) {
+              this.query();
+            }
+            break;
+          case "results_for_query":
+            if(page === QUERIER && trackQueriables) {
+              updateQueryView(data);
+            }
+            break;
+          default:
+            break;
+        }
       },
 
       query() {
-        this.perform("query", { querier_id: "DATA BEING SENT" });
+        navigator.geolocation.getCurrentPosition((pos) => {
+          this.perform("query", { querier_id: channelId, longitude: pos.coords.longitude, latitude: pos.coords.latitude, radius: radiusInput.value, unit: unitInput.value});
+        })
       },
 
       sendLocation(data) {
@@ -75,29 +99,48 @@ document.addEventListener("turbolinks:load", function () {
           queriable_id: queriableId.textContent,
         });
       },
-    },
-    channelId
-  );
-
-  // Querier_Panel
-  function startQuerying() {
-    // takes data from form and invokes a method
-  }
-
-  function updateQueryPanel() {
-    // display changes on UI
-  }
-
-  // Helper used for defining which pages to intialize the websocket connections on, with wildcard matching for id
-  function isPathMatch(path) {
-    for (let pattern of GEO_SYSTEM_PATHS) {
-      if (pattern.test(path)) {
-        return true;
-      }
     }
-    return false;
+  );
+  
+  // Querier_Panel
+  function referQuerierPageElements() {
+    querySwitch = document.getElementById("querySwitch");
+    radiusInput = document.getElementById("radius");
+    unitInput = document.getElementById("unit");
+    resultsTable = document.getElementById("results");
   }
 
+  function instantiateQuerierPage() {
+    querySwitch.addEventListener("click", () => {
+      trackQueriables = !trackQueriables;
+      if(trackQueriables) {
+        // make the intial query after which the websocket will handle real time querying on ueeriables updates
+        realTimeGeoSystem.query();
+      }
+      querySwitch.style.color = trackQueriables ? "red" : "green";
+      querySwitch.textContent = trackQueriables ? "Stop Live Querying" : "Start Live Querying";
+    });
+    channelId = String(currentPath).split("/")[5];
+  }
+
+  function updateQueryView(data) {
+    console.log(data);
+    // redraw table
+    resultsTable.innerHTML = "";
+    for (let [queriableId, distanceFromMe, longLat] of data.query_result) {
+      const lonLat = `${longLat[0]}, ${longLat[1]}`;
+      const row = resultsTable.insertRow(resultsTable.rows.length);
+      const cell1 = row.insertCell(0);
+      const cell2 = row.insertCell(1);
+      const cell3 = row.insertCell(2);
+      cell1.innerHTML = queriableId;
+      cell2.innerHTML = distanceFromMe;
+      cell3.innerHTML = lonLat;
+    }
+  }
+
+  
+  // Queriable_Panel
   function referQueriablePageElements() {
     latitudeDiv = document.getElementById("latitude");
     longitudeDiv = document.getElementById("longitude");
@@ -122,12 +165,10 @@ document.addEventListener("turbolinks:load", function () {
       id: null,
       notify() {
         if (trackMe.val) {
-          // attach event listener on location update
           this.id = navigator.geolocation.watchPosition((x) =>
             notifyServerOfLocationUpdateAndUpdateView(x)
           );
         } else {
-          // detach event listener on location update
           navigator.geolocation.clearWatch(this.id);
         }
       },
@@ -145,7 +186,13 @@ document.addEventListener("turbolinks:load", function () {
     longitudeDiv.textContent = longitude;
   }
 
-  function referQuerierPageElements() {
-    // to be implemented
+  // Helper used for defining which pages to intialize the websocket connections on, with wildcard matching for id
+  function isPathMatch(path) {
+    for (let pattern of GEO_SYSTEM_PATHS) {
+      if (pattern.test(path)) {
+        return true;
+      }
+    }
+    return false;
   }
 });
