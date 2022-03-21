@@ -88,7 +88,7 @@ document.addEventListener("turbolinks:load", function () {
       query() {
         navigator.geolocation.getCurrentPosition((pos) => {
           this.perform("query", { querier_id: channelId, longitude: pos.coords.longitude, latitude: pos.coords.latitude, radius: radiusInput.value, unit: unitInput.value});
-        })
+        }, (err) => alert(err));
       },
 
       sendLocation(data) {
@@ -165,9 +165,9 @@ document.addEventListener("turbolinks:load", function () {
       id: null,
       notify() {
         if (trackMe.val) {
-          this.id = navigator.geolocation.watchPosition((x) =>
+          this.id = navigator.geolocation.watchPosition((x) => {
             notifyServerOfLocationUpdateAndUpdateView(x)
-          );
+          }, (err) => alert(err));
         } else {
           navigator.geolocation.clearWatch(this.id);
         }
