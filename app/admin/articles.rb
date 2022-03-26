@@ -6,13 +6,15 @@ ActiveAdmin.register Article do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :title, :body, :status, :internal_linkedin_schedulers
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:title, :body, :status]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
+  permit_params :title, :body, :status, :internal_linkedin_schedulers, :content
+
+  form do |f|
+    f.inputs 'Articles' do
+      f.input :title
+      f.input :body
+      f.input :content, as: :quill_editor
+      f.input :status
+    end
+    f.actions
+  end
 end

@@ -13,3 +13,6 @@ Turbolinks.start()
 ActiveStorage.start()
 
 require("../../assets/stylesheets/application.scss")
+
+require("trix")
+require("@rails/actiontext")
