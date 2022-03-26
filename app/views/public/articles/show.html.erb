@@ -8,13 +8,7 @@
     <%= @article.title %>
 </h2>
 
-<% if @article.content.nil?%>
-<div class="preformatted">
-    <%= @article.body %>
-</div>
-<% end %>
-
-<div>
+<div style="word-wrap: break-word;">
     <%= @article.content %>
 </div>
 

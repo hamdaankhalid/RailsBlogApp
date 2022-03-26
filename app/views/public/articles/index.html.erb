@@ -14,7 +14,6 @@ Our blog has <%= Article.public_count %> articles and <%= Comment.public_count %
         <% unless article.archived? %>
             <div style="margin: 12px 0; background: #F4F4F4;">
                 <strong><%= link_to "#{article.title}", article %></strong>
-                <p><%= article.body[0..41].gsub(/\s\w+\s*$/, "...") %>  <%= link_to "click here to read more.", article %></p>
             </div>
         <% end %>
 <% end %>
