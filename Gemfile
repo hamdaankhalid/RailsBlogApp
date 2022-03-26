@@ -23,6 +23,7 @@ gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 4.5.1'
 
+gem 'activeadmin_quill_editor'
 gem 'uglifier'
 
 # Use Active Model has_secure_password
