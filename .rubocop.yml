@@ -4,6 +4,7 @@ Style/Documentation:
   Enabled: false
 
 AllCops:
+  SuggestExtensions: false
   Rails:
     Enabled: true
   Exclude:
@@ -12,6 +13,7 @@ AllCops:
     - bin/**/*
     - vendor/**/*
     - config/routes.rb
+    - tmp/**/*
 
 Metrics/BlockLength:
   IgnoredMethods: ['describe', 'context']
