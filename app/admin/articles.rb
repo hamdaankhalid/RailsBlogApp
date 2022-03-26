@@ -6,12 +6,21 @@ ActiveAdmin.register Article do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :title, :body, :status, :internal_linkedin_schedulers, :content
+  permit_params :title, :status, :content
+
+  show do |article|
+    attributes_table do
+      row :title
+      row :status
+      attributes_table_for article.content do
+        row :body
+      end
+    end
+  end
 
   form do |f|
     f.inputs 'Articles' do
       f.input :title
-      f.input :body
       f.input :content, as: :quill_editor
       f.input :status
     end
