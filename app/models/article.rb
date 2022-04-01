@@ -13,6 +13,6 @@ class Article < ApplicationRecord
   private
 
   def notify_subscribers
-    NotifySubscribersJob.perform_later self if status == 'public' && created_at == updated_at
+    NotifySubscribersJob.perform_later self if status == 'public'
   end
 end
