@@ -3,7 +3,7 @@
 module Public
   class ArticlesController < Public::BaseController
     def index
-      @articles = Article.all.order(created_at: :desc)
+      @articles = Article.where(status: :public).order(created_at: :desc).paginate(page: params[:page], per_page: 5)
       @subscription = Subscription.new
     end
 
