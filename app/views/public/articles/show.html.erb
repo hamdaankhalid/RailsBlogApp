@@ -3,7 +3,8 @@
   <%= @article.title %>
 <% end %>
 
-<div style="margin: 20px 0;">
+<div style="margin: 20px auto; max-width:768px;">
+
 <h2>
     <%= @article.title %>
 </h2>
@@ -12,7 +13,6 @@
     <%= @article.content %>
 </div>
 
-</div>
 
 <h2> Comments </h2>
 <% @article.comments.each do |comment| %>
@@ -24,3 +24,4 @@
 <%= render "public/comments/form" %>
 </div>
 
+</div>
