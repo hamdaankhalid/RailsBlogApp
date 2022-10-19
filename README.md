@@ -1,7 +1,7 @@
 # README
  
 Deploy via herolu cli because of security vulnerabililty: git push -f heroku main
-
+ 
 This is going to be my new personal website and it's going to be mad slick.
 
 ## Features
