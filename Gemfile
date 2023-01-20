@@ -46,6 +46,7 @@ gem 'sidekiq', '~> 5.2.8'
 gem 'swearjar'
 gem 'will_paginate', '~> 3.3'
 gem 'will_paginate-bootstrap4'
+gem "sidekiq-cron"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

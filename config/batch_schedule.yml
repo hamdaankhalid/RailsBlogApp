@@ -1,0 +1,9 @@
+# config/schedule.yml
+
+daily_report_job:
+  cron: "* * * * *" # execute at every day at 6 am
+  class: "DailyReportJob"
+  queue: default
+  args:
+    foo: "bar"
+  
