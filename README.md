@@ -2,6 +2,7 @@
  
 Deploy via herolu cli because of security vulnerabililty: git push -f heroku main
 Rails Migrate Heroku: heroku run rails db:migrate
+
 This is going to be my new personal website and it's going to be mad slick.
 
 ## Features
