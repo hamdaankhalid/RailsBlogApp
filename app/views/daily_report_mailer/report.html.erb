@@ -1,0 +1,19 @@
+<h1>
+Daily Report For <%= @report_date %>
+</h1>
+
+<div>
+Route -> Count
+</div>
+
+<% @routes_hit.each do | route, count | %>
+<div>
+  <%= route %> : <%= count %>
+</div>
+<% end %>
+
+<div>
+Regards,<br>
+Hamdaan Khalid<br>
+Keyboard clicker clacker
+</div>

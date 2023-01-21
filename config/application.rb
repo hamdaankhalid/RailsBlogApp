@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'boot'
+require_relative '../lib/middleware/routes_collector.rb'
 
 require 'rails/all'
 
@@ -37,5 +38,7 @@ module Blog
     config.file_watcher = ActiveSupport::EventedFileUpdateChecker
     config.exceptions_app = routes
     config.active_job.queue_adapter = :sidekiq
+
+    config.middleware.use RoutesCollector
   end
 end

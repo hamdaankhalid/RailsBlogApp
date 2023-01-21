@@ -1,0 +1,6 @@
+Daily Report For <%= @report_date %>
+
+Route -> Count
+<% @routes_hit.each do | route, count | %>
+  <%= route %> : <%= count %>
+<% end %>
