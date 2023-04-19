@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_20_061004) do
+ActiveRecord::Schema.define(version: 2023_04_19_173709) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,15 @@ ActiveRecord::Schema.define(version: 2023_01_20_061004) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "status"
+  end
+
+  create_table "code_reminders", force: :cascade do |t|
+    t.string "email", null: false
+    t.integer "cadence"
+    t.integer "cadence_unit"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_code_reminders_on_email", unique: true
   end
 
   create_table "comments", force: :cascade do |t|

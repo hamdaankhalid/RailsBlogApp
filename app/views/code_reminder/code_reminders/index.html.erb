@@ -1,0 +1,30 @@
+
+<h1>Code Reminder</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Cadence</th>
+      <th>Cadence unit</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @code_reminders.each do |code_reminder| %>
+      <tr>
+        <td><%= code_reminder.email %></td>
+        <td><%= code_reminder.cadence %></td>
+        <td><%= code_reminder.cadence_unit %></td>
+        <td><%= link_to 'Show', code_reminder %></td>
+        <td><%= link_to 'Edit', edit_code_reminder_path(code_reminder) %></td>
+        <td><%= link_to 'Destroy', code_reminder, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Code Reminder', new_code_reminder_path %>

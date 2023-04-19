@@ -19,6 +19,10 @@ Rails.application.routes.draw do
   get 'about', to: 'public/about_me#index'
   get 'contact', to: 'public/contacts#index'
   post 'subscriptions', to: 'public/subscribe_article#create'
+  
+  scope module: 'code_reminder' do
+    resources :code_reminders
+  end
 
   scope module: 'public' do
     get 'projects', to: 'projects#index'
