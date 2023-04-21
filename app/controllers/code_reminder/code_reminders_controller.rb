@@ -12,8 +12,10 @@ class CodeReminder::CodeRemindersController < InheritedResources::Base
     if @code_reminder.save
       flash[:notice] = 'Code Reminder was successfully created'
       token_checker = TokenChecker.new
+      # send initial email
+      # schedule job for cadence, and that scheduled job should also schedule more jobs in the future.
       token = token_checker.generate_token(@code_reminder.email, 120_000)
-      logger.info(token)
+      logger.info("Token for accessing edit page:  #{token}")
       redirect_to new_code_reminder_path
     else
       render :new
