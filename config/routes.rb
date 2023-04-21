@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   post 'subscriptions', to: 'public/subscribe_article#create'
   
   scope module: 'code_reminder' do
-    resources :code_reminders
+    resources :code_reminders, only: [:new, :create, :edit, :update, :destroy]
   end
 
   scope module: 'public' do

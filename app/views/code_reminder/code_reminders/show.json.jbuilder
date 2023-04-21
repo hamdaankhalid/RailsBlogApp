@@ -1,1 +1,0 @@
-json.partial! "code_reminder_code_reminders/code_reminder_code_reminder", code_reminder_code_reminder: @code_reminder_code_reminder
