@@ -23,8 +23,10 @@
 
   <div class="field">
     <%= form.label :cadence_unit %>
-    <%= form.select :cadence_unit, options_for_select(CodeReminder.cadence_units.map {|key, value| [key.titleize, CodeReminder.cadence_units.key(value)]}, @code_reminder.cadence_unit) %>
+    <%= form.select :cadence_unit, options_for_select(CodeReminder.cadence_units.map {|key, value| [key.titleize, CodeReminder.cadence_units.key(value)]}, code_reminder.cadence_unit) %>
   </div>
+
+  <%= hidden_field_tag 'token', token %>
 
   <div class="actions">
     <%= form.submit %>

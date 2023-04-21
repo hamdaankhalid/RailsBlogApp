@@ -23,31 +23,38 @@ class CodeReminder::CodeRemindersController < InheritedResources::Base
   # visible only via link token
   def edit
     @code_reminder = CodeReminder.find(params[:id])
+    @token = params[:token]
   end
 
   # visible only via link token
   def update
     @code_reminder = CodeReminder.find(params[:id])
     flash[:notice] = 'Code Reminder was successfully updated.' if @code_reminder.update(code_reminder_params)
+    @token = params[:token]
     render :edit
   end
 
   # visible only via link token
   def destroy
     CodeReminder.destroy(params[:id])
+    flash[:notice] = 'Code Reminder was successfully deleted.'
+    redirect_to new_code_reminder_path
   end
 
   private
 
   def code_reminder_params
-    params.require(:code_reminder).permit(:email, :cadence, :cadence_unit)
+    params.require(:code_reminder).permit(:email, :cadence, :cadence_unit, :token)
   end
 
   def check_link_token
     token_checker = TokenChecker.new
-    if token_checker.valid_token?(params[:token])
+
+    return false if params[:token].nil?
+
+    unless token_checker.valid_token?(params[:token])
       render plain: 'Unauthorized', status: :forbidden
-      retunr false
+      return false
     end
 
     code_reminder = CodeReminder.find(params[:id])
