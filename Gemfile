@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'redis', '~> 4.5.1'
 gem 'activeadmin_quill_editor'
 gem 'uglifier'
+gem 'jwt'
 
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -46,7 +47,7 @@ gem 'sidekiq', '~> 5.2.8'
 gem 'swearjar'
 gem 'will_paginate', '~> 3.3'
 gem 'will_paginate-bootstrap4'
-gem "sidekiq-cron"
+gem 'sidekiq-cron'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

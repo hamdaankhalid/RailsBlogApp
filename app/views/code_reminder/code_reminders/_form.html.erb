@@ -1,0 +1,34 @@
+<%= form_with(model: code_reminder) do |form| %>
+  <% if code_reminder.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(code_reminder.errors.count, "error") %> prohibited this code_reminder from being saved:</h2>
+
+      <ul>
+        <% code_reminder.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cadence %>
+    <%= form.number_field :cadence %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cadence_unit %>
+    <%= form.select :cadence_unit, options_for_select(CodeReminder.cadence_units.map {|key, value| [key.titleize, CodeReminder.cadence_units.key(value)]}, code_reminder.cadence_unit) %>
+  </div>
+
+  <%= hidden_field_tag 'token', token %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

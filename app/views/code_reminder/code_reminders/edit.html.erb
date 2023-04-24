@@ -1,0 +1,5 @@
+<h1>Edit Code Reminder</h1>
+
+<%= render 'form', code_reminder: @code_reminder, token: @token %>
+
+<%= link_to 'Destroy', @code_reminder, method: :delete, data: { confirm: 'Are you sure you want to delete your Code Reminder?' }, class: 'btn btn-danger', title: 'Delete', remote: true, params: { token: @token }.to_query %>
