@@ -1,5 +1,5 @@
 class CodeReminderMailer < ApplicationMailer
-  def notify
+  def code_reminder_mail
     @question_link = params[:question_link]
     @language = params[:language]
     @edit_code_reminder_link = params[:edit_code_reminder_link]
