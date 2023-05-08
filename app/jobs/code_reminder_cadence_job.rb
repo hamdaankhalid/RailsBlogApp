@@ -19,7 +19,7 @@ class CodeReminderCadenceJob < ApplicationJob
 
     CodeReminderCadenceJob.set(
       wait_until: next_reminder(code_reminder.cadence, code_reminder.cadence_unit)
-    ).perform_later(code_reminder_id, code_reminder.email)
+    ).perform_later(code_reminder_id)
   rescue ActiveRecord::RecordNotFound
     logger.info("Code Reminder with id #{code_reminder_id} not found")
   end
